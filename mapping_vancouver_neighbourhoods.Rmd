@@ -53,6 +53,7 @@ library(xml2)
 library(httr)
 library(glue)
 library(ggtext)
+library(kableExtra)
 
 maptheme <- theme_void() +
   theme(text = element_text(family = "IBM Plex Sans"),
@@ -129,7 +130,8 @@ cda_intersections <- st_intersection(van, cda_van) %>%
 cda_intersections %>%
   arrange(desc(DAUID)) %>%
   head() %>%
-  mutate(intersect_area = round(intersect_area))
+  mutate(intersect_area = round(intersect_area)) %>%
+  kable()
 ```
 
 ```{r echo = FALSE}
@@ -233,7 +235,8 @@ cda_intersections <- left_join(cda_van,
                                       cda_intersections,
                                       by = "DAUID")
 
-head(cda_intersections)
+
+kable(head(cda_intersections))
 ```
 
 When we plot these intersections that have NA values, 
@@ -346,7 +349,7 @@ da_to_neighbourhood <- cda_intersections %>%
   tibble() %>%
   select(DAUID, DGUID, name, -geometry)
 
-head(da_to_neighbourhood)
+kable(head(da_to_neighbourhood))
 ```
 
 ```{r eval = FALSE}
