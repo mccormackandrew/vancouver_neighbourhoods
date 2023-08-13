@@ -136,7 +136,7 @@ cda_intersections %>%
   arrange(desc(DAUID)) %>%
   head() %>%
   mutate(intersect_area = round(intersect_area)) %>%
-  kable(format = "simple")
+  kable(format = "markdown")
 ```
 
 | name                     | DAUID    | intersect_area |
@@ -243,7 +243,7 @@ cda_intersections <- left_join(cda_van,
                                       by = "DAUID")
 
 
-kable(head(cda_intersections), format = "simple")
+kable(head(cda_intersections), format = "markdown")
 ```
 
 | DAUID    | DGUID             | LANDAREA | PRUID | name | intersect_area | prop_of_da | prop_of_da_buckets | geometry                     |
@@ -370,7 +370,7 @@ da_to_neighbourhood <- cda_intersections %>%
   tibble() %>%
   select(DAUID, DGUID, name, -geometry)
 
-kable(head(da_to_neighbourhood), format = "simple")
+kable(head(da_to_neighbourhood), format = "markdown")
 ```
 
 | DAUID    | DGUID             | name             |
