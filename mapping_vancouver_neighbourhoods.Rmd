@@ -43,7 +43,7 @@ Let's get started.
 
 ## Loading packages
 
-```{r }
+```{r load packages}
 library(sf)
 library(tidyverse)
 library(Hmisc)
@@ -71,7 +71,7 @@ and the latter I've downloaded from the [City of Vancouver's Open Data Portal](h
 The DA shapefile is pretty big, so off the bat I narrow it down to only include
 the bounding box of Vancouver (based off of the Vancouver shapefile).
 
-```{r eval = FALSE}
+```{r load-shapefiles, eval = FALSE}
 # Read in DA shapefile
 cda <- st_read("lda_000b21a_e/lda_000b21a_e.shp")
 
@@ -85,7 +85,7 @@ van <- st_transform(van, st_crs(cda))
 cda_van <- st_crop(cda, st_bbox(van))
 ```
 
-```{r echo = FALSE}
+```{r load-shapefiles-secretly, echo = FALSE}
 # Secretely read in the data because above slow
 cda_van <- readRDS("~/Library/Mobile Documents/com~apple~CloudDocs/vandash_data/cda_van_sf.rds")
 van <- st_read("~/Library/Mobile Documents/com~apple~CloudDocs/vandash_data/local-area-boundary/local-area-boundary.shp")
@@ -94,7 +94,7 @@ van <- st_transform(van, st_crs(cda_van))
 
 Let's overlay both maps on top of one another take a quick look at what we're working with:
 
-```{r eval = FALSE}
+```{r fig1, eval = FALSE}
 ggplot(cda_van) +
   geom_sf(aes(colour = "Census dissemination areas"),
           fill = "#f5f4f2") +
@@ -106,22 +106,6 @@ ggplot(cda_van) +
   ggtitle(str_wrap("Vancouver neighbourhoods overlayed on census dissemination areas", 40)) +
   maptheme
 ```
-
-```{r echo = FALSE, eval = FALSE}
-ggplot(cda_van) +
-  geom_sf(aes(colour = "Census dissemination areas"),
-          fill = "#f5f4f2") +
-  geom_sf(data = van,
-          aes(colour = "Vancouver neighbourhoods"),
-          fill = NA,
-          linewidth = 1) +
-  scale_colour_manual(values = c("#D95E32", "black")) +
-  ggtitle(str_wrap("Vancouver neighbourhoods overlayed on census dissemination areas", 40)) +
-  maptheme
-
-ggsave("figs/mvn_f1.png", width = 6, height = 6)
-```
-
 
 Discerning readers will immediately recognize this as Vancouver. The red lines are Vancouver neighbourhoods, while the black lines mark the borders of DAs.
 
@@ -185,7 +169,7 @@ cda_intersections <- cda_intersections %>%
                                   include.lowest = TRUE))
 ```
 
-```{r eval = FALSE}
+```{r fig2, eval = FALSE}
 cda_intersections %>%
   count(prop_of_da_buckets) %>%
   mutate(proportion = n/sum(n)) %>%

@@ -111,8 +111,6 @@ ggplot(cda_van) +
   maptheme
 ```
 
-![](mapping_vancouver_neighbourhoods_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
-
 Discerning readers will immediately recognize this as Vancouver. The red
 lines are Vancouver neighbourhoods, while the black lines mark the
 borders of DAs.
