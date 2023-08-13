@@ -6,7 +6,8 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
+                      results = "asis")
 ```
 
 # Grouping dissemination areas into Vancouver neighbourhoods
@@ -344,7 +345,7 @@ Now that we're more or less satisfied with how we've mapped the DAs to
 Vancouver neighbourhoods, we can save this mapping and then use it
 to aggregate the DA Census data.
 
-```{r}
+```{r results='markup'}
 da_to_neighbourhood <- cda_intersections %>%
   tibble() %>%
   select(DAUID, DGUID, name, -geometry)
