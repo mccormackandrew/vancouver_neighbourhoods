@@ -131,7 +131,7 @@ cda_intersections %>%
   arrange(desc(DAUID)) %>%
   head() %>%
   mutate(intersect_area = round(intersect_area)) %>%
-  kable()
+  kable(format = "simple")
 ```
 
 ```{r echo = FALSE}
@@ -236,7 +236,7 @@ cda_intersections <- left_join(cda_van,
                                       by = "DAUID")
 
 
-kable(head(cda_intersections))
+kable(head(cda_intersections), format = "simple")
 ```
 
 When we plot these intersections that have NA values, 
@@ -349,7 +349,7 @@ da_to_neighbourhood <- cda_intersections %>%
   tibble() %>%
   select(DAUID, DGUID, name, -geometry)
 
-kable(head(da_to_neighbourhood))
+kable(head(da_to_neighbourhood), format = "simple")
 ```
 
 ```{r eval = FALSE}

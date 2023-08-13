@@ -137,92 +137,17 @@ cda_intersections %>%
   arrange(desc(DAUID)) %>%
   head() %>%
   mutate(intersect_area = round(intersect_area)) %>%
-  kable()
+  kable(format = "simple")
 ```
 
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-name
-</th>
-<th style="text-align:left;">
-DAUID
-</th>
-<th style="text-align:right;">
-intersect_area
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Kensington-Cedar Cottage
-</td>
-<td style="text-align:left;">
-59154196
-</td>
-<td style="text-align:right;">
-27 \[m^2\]
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Renfrew-Collingwood
-</td>
-<td style="text-align:left;">
-59154196
-</td>
-<td style="text-align:right;">
-143291 \[m^2\]
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Killarney
-</td>
-<td style="text-align:left;">
-59154195
-</td>
-<td style="text-align:right;">
-120619 \[m^2\]
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Renfrew-Collingwood
-</td>
-<td style="text-align:left;">
-59154195
-</td>
-<td style="text-align:right;">
-2943 \[m^2\]
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Victoria-Fraserview
-</td>
-<td style="text-align:left;">
-59154195
-</td>
-<td style="text-align:right;">
-427 \[m^2\]
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Killarney
-</td>
-<td style="text-align:left;">
-59154194
-</td>
-<td style="text-align:right;">
-173 \[m^2\]
-</td>
-</tr>
-</tbody>
-</table>
+| name                     | DAUID    | intersect_area |
+|:-------------------------|:---------|---------------:|
+| Kensington-Cedar Cottage | 59154196 |     27 \[m^2\] |
+| Renfrew-Collingwood      | 59154196 | 143291 \[m^2\] |
+| Killarney                | 59154195 | 120619 \[m^2\] |
+| Renfrew-Collingwood      | 59154195 |   2943 \[m^2\] |
+| Victoria-Fraserview      | 59154195 |    427 \[m^2\] |
+| Killarney                | 59154194 |    173 \[m^2\] |
 
 Looking at a few rows of our intersections, we can see CD `59154196` (a
 DA I’m sure we’re all familiar with) is mostly in Renfrew-Collignwood,
@@ -319,218 +244,17 @@ cda_intersections <- left_join(cda_van,
                                       by = "DAUID")
 
 
-kable(head(cda_intersections))
+kable(head(cda_intersections), format = "simple")
 ```
 
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-DAUID
-</th>
-<th style="text-align:left;">
-DGUID
-</th>
-<th style="text-align:right;">
-LANDAREA
-</th>
-<th style="text-align:left;">
-PRUID
-</th>
-<th style="text-align:left;">
-name
-</th>
-<th style="text-align:right;">
-intersect_area
-</th>
-<th style="text-align:right;">
-prop_of_da
-</th>
-<th style="text-align:left;">
-prop_of_da_buckets
-</th>
-<th style="text-align:left;">
-geometry
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-59150071
-</td>
-<td style="text-align:left;">
-2021S051259150071
-</td>
-<td style="text-align:right;">
-1.5073
-</td>
-<td style="text-align:left;">
-59
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-NA \[m^2\]
-</td>
-<td style="text-align:right;">
-NA \[1\]
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-POLYGON ((4022065 2010531, …
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-59150073
-</td>
-<td style="text-align:left;">
-2021S051259150073
-</td>
-<td style="text-align:right;">
-0.2620
-</td>
-<td style="text-align:left;">
-59
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-NA \[m^2\]
-</td>
-<td style="text-align:right;">
-NA \[1\]
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-POLYGON ((4022672 2010487, …
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-59150074
-</td>
-<td style="text-align:left;">
-2021S051259150074
-</td>
-<td style="text-align:right;">
-0.0658
-</td>
-<td style="text-align:left;">
-59
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-NA \[m^2\]
-</td>
-<td style="text-align:right;">
-NA \[1\]
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-POLYGON ((4022698 2010531, …
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-59150076
-</td>
-<td style="text-align:left;">
-2021S051259150076
-</td>
-<td style="text-align:right;">
-0.3286
-</td>
-<td style="text-align:left;">
-59
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-NA \[m^2\]
-</td>
-<td style="text-align:right;">
-NA \[1\]
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-POLYGON ((4022977 2010531, …
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-59150077
-</td>
-<td style="text-align:left;">
-2021S051259150077
-</td>
-<td style="text-align:right;">
-0.1138
-</td>
-<td style="text-align:left;">
-59
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-NA \[m^2\]
-</td>
-<td style="text-align:right;">
-NA \[1\]
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-POLYGON ((4023360 2010531, …
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-59150078
-</td>
-<td style="text-align:left;">
-2021S051259150078
-</td>
-<td style="text-align:right;">
-0.4834
-</td>
-<td style="text-align:left;">
-59
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-NA \[m^2\]
-</td>
-<td style="text-align:right;">
-NA \[1\]
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-POLYGON ((4023684 2010371, …
-</td>
-</tr>
-</tbody>
-</table>
+| DAUID    | DGUID             | LANDAREA | PRUID | name | intersect_area | prop_of_da | prop_of_da_buckets | geometry                     |
+|:---------|:------------------|---------:|:------|:-----|---------------:|-----------:|:-------------------|:-----------------------------|
+| 59150071 | 2021S051259150071 |   1.5073 | 59    | NA   |     NA \[m^2\] |   NA \[1\] | NA                 | POLYGON ((4022065 2010531, … |
+| 59150073 | 2021S051259150073 |   0.2620 | 59    | NA   |     NA \[m^2\] |   NA \[1\] | NA                 | POLYGON ((4022672 2010487, … |
+| 59150074 | 2021S051259150074 |   0.0658 | 59    | NA   |     NA \[m^2\] |   NA \[1\] | NA                 | POLYGON ((4022698 2010531, … |
+| 59150076 | 2021S051259150076 |   0.3286 | 59    | NA   |     NA \[m^2\] |   NA \[1\] | NA                 | POLYGON ((4022977 2010531, … |
+| 59150077 | 2021S051259150077 |   0.1138 | 59    | NA   |     NA \[m^2\] |   NA \[1\] | NA                 | POLYGON ((4023360 2010531, … |
+| 59150078 | 2021S051259150078 |   0.4834 | 59    | NA   |     NA \[m^2\] |   NA \[1\] | NA                 | POLYGON ((4023684 2010371, … |
 
 When we plot these intersections that have NA values, we can see that
 these are CDAs that were caught within the bounding box of Vancouver,
@@ -647,92 +371,17 @@ da_to_neighbourhood <- cda_intersections %>%
   tibble() %>%
   select(DAUID, DGUID, name, -geometry)
 
-kable(head(da_to_neighbourhood))
+kable(head(da_to_neighbourhood), format = "simple")
 ```
 
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-DAUID
-</th>
-<th style="text-align:left;">
-DGUID
-</th>
-<th style="text-align:left;">
-name
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-59150305
-</td>
-<td style="text-align:left;">
-2021S051259150305
-</td>
-<td style="text-align:left;">
-Hastings-Sunrise
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-59150307
-</td>
-<td style="text-align:left;">
-2021S051259150307
-</td>
-<td style="text-align:left;">
-Hastings-Sunrise
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-59150308
-</td>
-<td style="text-align:left;">
-2021S051259150308
-</td>
-<td style="text-align:left;">
-Hastings-Sunrise
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-59150309
-</td>
-<td style="text-align:left;">
-2021S051259150309
-</td>
-<td style="text-align:left;">
-Hastings-Sunrise
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-59150310
-</td>
-<td style="text-align:left;">
-2021S051259150310
-</td>
-<td style="text-align:left;">
-Hastings-Sunrise
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-59150311
-</td>
-<td style="text-align:left;">
-2021S051259150311
-</td>
-<td style="text-align:left;">
-Hastings-Sunrise
-</td>
-</tr>
-</tbody>
-</table>
+| DAUID    | DGUID             | name             |
+|:---------|:------------------|:-----------------|
+| 59150305 | 2021S051259150305 | Hastings-Sunrise |
+| 59150307 | 2021S051259150307 | Hastings-Sunrise |
+| 59150308 | 2021S051259150308 | Hastings-Sunrise |
+| 59150309 | 2021S051259150309 | Hastings-Sunrise |
+| 59150310 | 2021S051259150310 | Hastings-Sunrise |
+| 59150311 | 2021S051259150311 | Hastings-Sunrise |
 
 ``` r
 saveRDS(da_to_neighbourhood, "da_to_neighbourhood.rds")
