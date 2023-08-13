@@ -111,7 +111,7 @@ ggplot(cda_van) +
   maptheme
 ```
 
-![](gittestdocmd_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+![](mapping_vancouver_neighbourhoods_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
 Discerning readers will immediately recognize this as Vancouver. The red
 lines are Vancouver neighbourhoods, while the black lines mark the
@@ -178,8 +178,9 @@ cda_intersections <- cda_intersections %>%
   mutate(prop_of_da_buckets = cut(prop_of_da, 
                                   breaks = seq(0, 1, 0.1), 
                                   include.lowest = TRUE))
-  
+```
 
+``` r
 cda_intersections %>%
   count(prop_of_da_buckets) %>%
   mutate(proportion = n/sum(n)) %>%
@@ -198,8 +199,6 @@ cda_intersections %>%
         axis.ticks.y = element_blank(),
         plot.title = element_text(face = "bold"))
 ```
-
-![](gittestdocmd_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
 
 As we can see, for 75% of the DA-neighbourhood intersections, 90% or
 more of the area of those intersections belong to one neighbourhood. In
@@ -232,8 +231,6 @@ ggplot(cda_van[cda_van$DAUID %in% duped_DAUIDs, ]) +
   theme_void() +
   maptheme
 ```
-
-![](gittestdocmd_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
 
 ### Removing non-Vancouver DAs
 
@@ -290,8 +287,6 @@ ggplot(cda_intersections[is.na(cda_intersections$name), ]) +
   maptheme
 ```
 
-![](gittestdocmd_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
-
 We can remove these non-Vancouver DAs.
 
 ``` r
@@ -337,8 +332,6 @@ ggplot(cda_intersections, aes(fill = name_colour)) +
   maptheme
 ```
 
-![](gittestdocmd_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
-
 Not perfect, but looks pretty good overall!
 
 There are a few CDAs on the periphery that are not within the boundaries
@@ -377,8 +370,6 @@ cda_intersections %>%
   scale_fill_identity() +
   maptheme
 ```
-
-![](gittestdocmd_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
 
 ### Saving our DA to Vancouver neighbourhood mapping
 

@@ -94,7 +94,7 @@ van <- st_transform(van, st_crs(cda_van))
 
 Let's overlay both maps on top of one another take a quick look at what we're working with:
 
-```{r}
+```{r eval = FALSE}
 ggplot(cda_van) +
   geom_sf(aes(colour = "Census dissemination areas"),
           fill = "#f5f4f2") +
@@ -106,6 +106,22 @@ ggplot(cda_van) +
   ggtitle(str_wrap("Vancouver neighbourhoods overlayed on census dissemination areas", 40)) +
   maptheme
 ```
+
+```{r echo = FALSE, eval = FALSE}
+ggplot(cda_van) +
+  geom_sf(aes(colour = "Census dissemination areas"),
+          fill = "#f5f4f2") +
+  geom_sf(data = van,
+          aes(colour = "Vancouver neighbourhoods"),
+          fill = NA,
+          linewidth = 1) +
+  scale_colour_manual(values = c("#D95E32", "black")) +
+  ggtitle(str_wrap("Vancouver neighbourhoods overlayed on census dissemination areas", 40)) +
+  maptheme
+
+ggsave("figs/mvn_f1.png", width = 6, height = 6)
+```
+
 
 Discerning readers will immediately recognize this as Vancouver. The red lines are Vancouver neighbourhoods, while the black lines mark the borders of DAs.
 
@@ -167,8 +183,9 @@ cda_intersections <- cda_intersections %>%
   mutate(prop_of_da_buckets = cut(prop_of_da, 
                                   breaks = seq(0, 1, 0.1), 
                                   include.lowest = TRUE))
-  
+```
 
+```{r eval = FALSE}
 cda_intersections %>%
   count(prop_of_da_buckets) %>%
   mutate(proportion = n/sum(n)) %>%
@@ -199,7 +216,7 @@ To illlustrate further, let's look at CDs that span more than one neighbourhood.
 From the map below, it looks like most (but not all) of the overlap is right along
 the border of the neighbourhoods:
 
-```{r}
+```{r eval = FALSE}
 # See which DAUIDs are duplicated. This will be dissemination areas
 # that span across 2 or more Vancouver neighbourhoods
 duped_DAUIDs <- unique(cda_intersections$DAUID[duplicated(cda_intersections$DAUID)])
@@ -240,7 +257,7 @@ we can see that these are CDAs that were caught within the bounding box
 of Vancouver, but don't actually belong to Vancouver (i.e. CDAs at UBC; and 
 in North Van, Richmond, and Burnaby).
 
-```{r}
+```{r eval = FALSE}
 ggplot(cda_intersections[is.na(cda_intersections$name), ]) +
   geom_sf(data = van, 
           aes(colour = "Vancouver neighbourhoods"),
@@ -279,7 +296,7 @@ like the actual Vancouver neighbourhoods.
 Because there are so many neighbourhoods, I have to get creative with the colours here:
 
 
-```{r}
+```{r eval = FALSE}
 neighbourhood_colours <- sample(c(viridis(9),
                                   inferno(9),
                                   plasma(9)),
@@ -311,7 +328,7 @@ There are some areas that concern us, and will need to be removed:
 - Mitchell Island (Richmond) and a chunk of Bridgeport (also Richmond). These are mostly industrial areas, so few inhabitants, but let's remove.
 - A bunch of Burnaby CDAs along Boundary Road. 
 
-```{r}
+```{r eval = FALSE}
 
 # Manually identify
 burnaby_cdas <- c("59150305", "59150314", "59153309", "59153310", 
