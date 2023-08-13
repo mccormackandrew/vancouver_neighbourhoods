@@ -109,6 +109,8 @@ ggplot(cda_van) +
   maptheme
 ```
 
+![Vancouver neighbourhoods overlayed on census dissemination areas](https://raw.githubusercontent.com/mccormackandrew/vancouver_neighbourhoods/main/figs/fig1-1.png)
+
 Discerning readers will immediately recognize this as Vancouver. The red lines are Vancouver neighbourhoods, while the black lines mark the borders of DAs.
 
 It's hard to tell at this point, but we can already tell we'll

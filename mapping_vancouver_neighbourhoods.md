@@ -13,9 +13,9 @@ The problem is that there is no “Vancouver Neighbourhoods” option in the
 StatCan census profile data. However, I can access census profile
 characteristics for each census dissemination area (DA), which are much
 smaller than neighbourhoods. So **my goal here is to find out which DAs
-belong to which Vancouver neighbourhoods, group** **these DAs together,
-and aggregate census profile characteristics to the Vancouver**
-**neighbourhood level.**
+belong to which Vancouver neighbourhoods, group these DAs together, and
+aggregate census profile characteristics to the Vancouver neighbourhood
+level.**
 
 The City of Vancouver has very comprehensive and nicely designed
 neighbourhood profiles (like [this
@@ -100,6 +100,14 @@ ggplot(cda_van) +
   ggtitle(str_wrap("Vancouver neighbourhoods overlayed on census dissemination areas", 40)) +
   maptheme
 ```
+
+<figure>
+<img
+src="https://raw.githubusercontent.com/mccormackandrew/vancouver_neighbourhoods/main/figs/fig1-1.png"
+alt="Vancouver neighbourhoods overlayed on census dissemination areas" />
+<figcaption aria-hidden="true">Vancouver neighbourhoods overlayed on
+census dissemination areas</figcaption>
+</figure>
 
 Discerning readers will immediately recognize this as Vancouver. The red
 lines are Vancouver neighbourhoods, while the black lines mark the
