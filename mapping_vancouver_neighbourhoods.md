@@ -87,13 +87,14 @@ van <- st_transform(van, st_crs(cda))
 cda_van <- st_crop(cda, st_bbox(van))
 ```
 
-Reading layer
-`local-area-boundary' from data source`/Users/andrewmccormack/Library/Mobile
-Documents/com<sub>apple</sub>CloudDocs/vandash_data/local-area-boundary/local-area-boundary.shp’
-using driver \`ESRI Shapefile’ Simple feature collection with 22
-features and 1 field Geometry type: POLYGON Dimension: XY Bounding box:
-xmin: -123.2248 ymin: 49.19894 xmax: -123.0232 ymax: 49.29581 Geodetic
-CRS: WGS 84
+    ## Reading layer `local-area-boundary' from data source 
+    ##   `/Users/andrewmccormack/Library/Mobile Documents/com~apple~CloudDocs/vandash_data/local-area-boundary/local-area-boundary.shp' 
+    ##   using driver `ESRI Shapefile'
+    ## Simple feature collection with 22 features and 1 field
+    ## Geometry type: POLYGON
+    ## Dimension:     XY
+    ## Bounding box:  xmin: -123.2248 ymin: 49.19894 xmax: -123.0232 ymax: 49.29581
+    ## Geodetic CRS:  WGS 84
 
 Let’s overlay both maps on top of one another take a quick look at what
 we’re working with:
