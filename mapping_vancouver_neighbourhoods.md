@@ -1,7 +1,5 @@
-Untitled
+Grouping dissemination areas into Vancouver neighbourhoods
 ================
-
-# Grouping dissemination areas into Vancouver neighbourhoods
 
 ## Why even do this?
 
@@ -87,15 +85,6 @@ van <- st_transform(van, st_crs(cda))
 cda_van <- st_crop(cda, st_bbox(van))
 ```
 
-    ## Reading layer `local-area-boundary' from data source 
-    ##   `/Users/andrewmccormack/Library/Mobile Documents/com~apple~CloudDocs/vandash_data/local-area-boundary/local-area-boundary.shp' 
-    ##   using driver `ESRI Shapefile'
-    ## Simple feature collection with 22 features and 1 field
-    ## Geometry type: POLYGON
-    ## Dimension:     XY
-    ## Bounding box:  xmin: -123.2248 ymin: 49.19894 xmax: -123.0232 ymax: 49.29581
-    ## Geodetic CRS:  WGS 84
-
 Let’s overlay both maps on top of one another take a quick look at what
 we’re working with:
 
@@ -111,6 +100,8 @@ ggplot(cda_van) +
   ggtitle(str_wrap("Vancouver neighbourhoods overlayed on census dissemination areas", 40)) +
   maptheme
 ```
+
+![](mapping_vancouver_neighbourhoods_files/figure-gfm/fig1-1.png)<!-- -->
 
 Discerning readers will immediately recognize this as Vancouver. The red
 lines are Vancouver neighbourhoods, while the black lines mark the
@@ -141,17 +132,13 @@ cda_intersections %>%
 ```
 
 | name                     | DAUID    | intersect_area |
-| :------------------------- | :--------- | ---------------: |
+|:-------------------------|:---------|---------------:|
 | Kensington-Cedar Cottage | 59154196 |     27 \[m^2\] |
 | Renfrew-Collingwood      | 59154196 | 143291 \[m^2\] |
 | Killarney                | 59154195 | 120619 \[m^2\] |
 | Renfrew-Collingwood      | 59154195 |   2943 \[m^2\] |
 | Victoria-Fraserview      | 59154195 |    427 \[m^2\] |
 | Killarney                | 59154194 |    173 \[m^2\] |
-
-| Left | Centre | Right |
-| :--- | :----: | ----: |
-| 1    |   2    |     3 |
 
 Looking at a few rows of our intersections, we can see CD `59154196` (a
 DA I’m sure we’re all familiar with) is mostly in Renfrew-Collignwood,
@@ -203,6 +190,8 @@ cda_intersections %>%
         plot.title = element_text(face = "bold"))
 ```
 
+![](mapping_vancouver_neighbourhoods_files/figure-gfm/fig2-1.png)<!-- -->
+
 As we can see, for 75% of the DA-neighbourhood intersections, 90% or
 more of the area of those intersections belong to one neighbourhood. In
 most cases, I think this is due to the fact that the Vancouver Shapefile
@@ -235,6 +224,8 @@ ggplot(cda_van[cda_van$DAUID %in% duped_DAUIDs, ]) +
   maptheme
 ```
 
+![](mapping_vancouver_neighbourhoods_files/figure-gfm/fig3-1.png)<!-- -->
+
 ### Removing non-Vancouver DAs
 
 If we merge together our DA-neighbourhood intersections with our
@@ -248,17 +239,19 @@ cda_intersections <- left_join(cda_van,
                                       by = "DAUID")
 
 
-kable(head(cda_intersections), format = "markdown")
+kable(head(cda_intersections), 
+      format = "markdown",
+      align = "l")
 ```
 
 | DAUID    | DGUID             | LANDAREA | PRUID | name | intersect_area | prop_of_da | prop_of_da_buckets | geometry                     |
-|:---------|:------------------|---------:|:------|:-----|---------------:|-----------:|:-------------------|:-----------------------------|
-| 59150071 | 2021S051259150071 |   1.5073 | 59    | NA   |     NA \[m^2\] |   NA \[1\] | NA                 | POLYGON ((4022065 2010531, … |
-| 59150073 | 2021S051259150073 |   0.2620 | 59    | NA   |     NA \[m^2\] |   NA \[1\] | NA                 | POLYGON ((4022672 2010487, … |
-| 59150074 | 2021S051259150074 |   0.0658 | 59    | NA   |     NA \[m^2\] |   NA \[1\] | NA                 | POLYGON ((4022698 2010531, … |
-| 59150076 | 2021S051259150076 |   0.3286 | 59    | NA   |     NA \[m^2\] |   NA \[1\] | NA                 | POLYGON ((4022977 2010531, … |
-| 59150077 | 2021S051259150077 |   0.1138 | 59    | NA   |     NA \[m^2\] |   NA \[1\] | NA                 | POLYGON ((4023360 2010531, … |
-| 59150078 | 2021S051259150078 |   0.4834 | 59    | NA   |     NA \[m^2\] |   NA \[1\] | NA                 | POLYGON ((4023684 2010371, … |
+|:---------|:------------------|:---------|:------|:-----|:---------------|:-----------|:-------------------|:-----------------------------|
+| 59150071 | 2021S051259150071 | 1.5073   | 59    | NA   | NA \[m^2\]     | NA \[1\]   | NA                 | POLYGON ((4022065 2010531, … |
+| 59150073 | 2021S051259150073 | 0.2620   | 59    | NA   | NA \[m^2\]     | NA \[1\]   | NA                 | POLYGON ((4022672 2010487, … |
+| 59150074 | 2021S051259150074 | 0.0658   | 59    | NA   | NA \[m^2\]     | NA \[1\]   | NA                 | POLYGON ((4022698 2010531, … |
+| 59150076 | 2021S051259150076 | 0.3286   | 59    | NA   | NA \[m^2\]     | NA \[1\]   | NA                 | POLYGON ((4022977 2010531, … |
+| 59150077 | 2021S051259150077 | 0.1138   | 59    | NA   | NA \[m^2\]     | NA \[1\]   | NA                 | POLYGON ((4023360 2010531, … |
+| 59150078 | 2021S051259150078 | 0.4834   | 59    | NA   | NA \[m^2\]     | NA \[1\]   | NA                 | POLYGON ((4023684 2010371, … |
 
 When we plot these intersections that have NA values, we can see that
 these are CDAs that were caught within the bounding box of Vancouver,
@@ -325,6 +318,8 @@ ggplot(cda_intersections, aes(fill = name_colour)) +
   maptheme
 ```
 
+![](mapping_vancouver_neighbourhoods_files/figure-gfm/fig5-1.png)<!-- -->
+
 Not perfect, but looks pretty good overall!
 
 There are a few CDAs on the periphery that are not within the boundaries
@@ -363,6 +358,8 @@ cda_intersections %>%
   scale_fill_identity() +
   maptheme
 ```
+
+![](mapping_vancouver_neighbourhoods_files/figure-gfm/fig6-1.png)<!-- -->
 
 ### Saving our DA to Vancouver neighbourhood mapping
 
