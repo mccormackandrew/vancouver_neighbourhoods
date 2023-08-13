@@ -101,8 +101,6 @@ ggplot(cda_van) +
   maptheme
 ```
 
-![](mapping_vancouver_neighbourhoods_files/figure-gfm/fig1-1.png)<!-- -->
-
 Discerning readers will immediately recognize this as Vancouver. The red
 lines are Vancouver neighbourhoods, while the black lines mark the
 borders of DAs.
@@ -190,8 +188,6 @@ cda_intersections %>%
         plot.title = element_text(face = "bold"))
 ```
 
-![](mapping_vancouver_neighbourhoods_files/figure-gfm/fig2-1.png)<!-- -->
-
 As we can see, for 75% of the DA-neighbourhood intersections, 90% or
 more of the area of those intersections belong to one neighbourhood. In
 most cases, I think this is due to the fact that the Vancouver Shapefile
@@ -223,8 +219,6 @@ ggplot(cda_van[cda_van$DAUID %in% duped_DAUIDs, ]) +
   theme_void() +
   maptheme
 ```
-
-![](mapping_vancouver_neighbourhoods_files/figure-gfm/fig3-1.png)<!-- -->
 
 ### Removing non-Vancouver DAs
 
@@ -318,8 +312,6 @@ ggplot(cda_intersections, aes(fill = name_colour)) +
   maptheme
 ```
 
-![](mapping_vancouver_neighbourhoods_files/figure-gfm/fig5-1.png)<!-- -->
-
 Not perfect, but looks pretty good overall!
 
 There are a few CDAs on the periphery that are not within the boundaries
@@ -358,8 +350,6 @@ cda_intersections %>%
   scale_fill_identity() +
   maptheme
 ```
-
-![](mapping_vancouver_neighbourhoods_files/figure-gfm/fig6-1.png)<!-- -->
 
 ### Saving our DA to Vancouver neighbourhood mapping
 

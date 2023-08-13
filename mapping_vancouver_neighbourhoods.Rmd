@@ -6,9 +6,7 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-
-create_figs <- TRUE
-
+create_figs <- FALSE
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
@@ -24,9 +22,7 @@ with data from the [2021 Canadian census](https://www12.statcan.gc.ca/census-rec
 The problem is that there is no "Vancouver Neighbourhoods" option in the StatCan
 census profile data. However, I can access census profile characteristics
 for each census dissemination area (DA), which are much smaller than neighbourhoods. So
-**my goal here is to find out which DAs belong to which Vancouver neighbourhoods, group**
-**these DAs together, and aggregate census profile characteristics to the Vancouver**
-**neighbourhood level.**
+**my goal here is to find out which DAs belong to which Vancouver neighbourhoods, group these DAs together, and aggregate census profile characteristics to the Vancouver neighbourhood level.**
 
 The City of Vancouver has very comprehensive and nicely designed neighbourhood profiles 
 (like [this one](https://vancouver.ca/files/cov/social-indicators-profile-killarney.pdf)
