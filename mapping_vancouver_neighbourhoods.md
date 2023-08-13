@@ -149,6 +149,10 @@ cda_intersections %>%
 | Victoria-Fraserview      | 59154195 |    427 \[m^2\] |
 | Killarney                | 59154194 |    173 \[m^2\] |
 
+| Left | Centre | Right |
+| :--- | :----: | ----: |
+| 1    |   2    |     3 |
+
 Looking at a few rows of our intersections, we can see CD `59154196` (a
 DA I’m sure we’re all familiar with) is mostly in Renfrew-Collignwood,
 but not all of it — 27 square meters are in Kensington Cedar Cottage.
