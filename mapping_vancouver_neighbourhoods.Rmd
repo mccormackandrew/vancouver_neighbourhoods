@@ -1,12 +1,13 @@
 ---
 title: "Grouping dissemination areas into Vancouver neighbourhoods"
-output: github_document
+output: html_document
+author: Andrew McCormack
 editor_options: 
   chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
-create_figs <- FALSE
+create_figs <- TRUE
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
@@ -58,6 +59,8 @@ maptheme <- theme_void() +
   theme(text = element_text(family = "IBM Plex Sans"),
         legend.position = "bottom",
         legend.title = element_blank(),
+        plot.background = element_rect(fill = "#F5F4F2"),
+        panel.background = element_rect(fill = "#F5F4F2"),
         plot.title = element_text(face = "bold"))
 
 ```
@@ -133,8 +136,7 @@ cda_intersections <- st_intersection(van, cda_van) %>%
 cda_intersections %>%
   arrange(desc(DAUID)) %>%
   head() %>%
-  mutate(intersect_area = round(intersect_area)) %>%
-  kable(format = "markdown")
+  mutate(intersect_area = round(intersect_area))
 ```
 
 ```{r echo = FALSE}
@@ -239,9 +241,7 @@ cda_intersections <- left_join(cda_van,
                                       by = "DAUID")
 
 
-kable(head(cda_intersections), 
-      format = "markdown",
-      align = "l")
+head(cda_intersections)
 ```
 
 When we plot these intersections that have NA values, 
@@ -354,7 +354,7 @@ da_to_neighbourhood <- cda_intersections %>%
   tibble() %>%
   select(DAUID, DGUID, name, -geometry)
 
-kable(head(da_to_neighbourhood), format = "markdown")
+head(da_to_neighbourhood)
 ```
 
 ```{r eval = FALSE}

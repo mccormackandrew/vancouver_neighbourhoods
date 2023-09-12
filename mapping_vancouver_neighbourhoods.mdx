@@ -141,15 +141,17 @@ cda_intersections %>%
   mutate(intersect_area = round(intersect_area))
 ```
 
-    ## # A tibble: 6 × 3
-    ##   name                     DAUID    intersect_area
-    ##   <chr>                    <chr>             [m^2]
-    ## 1 Kensington-Cedar Cottage 59154196             27
-    ## 2 Renfrew-Collingwood      59154196         143291
-    ## 3 Killarney                59154195         120619
-    ## 4 Renfrew-Collingwood      59154195           2943
-    ## 5 Victoria-Fraserview      59154195            427
-    ## 6 Killarney                59154194            173
+```
+##  A tibble: 6 × 3
+##   name                     DAUID    intersect_area
+##   <chr>                    <chr>             [m^2]
+## 1 Kensington-Cedar Cottage 59154196             27
+## 2 Renfrew-Collingwood      59154196         143291
+## 3 Killarney                59154195         120619
+## 4 Renfrew-Collingwood      59154195           2943
+## 5 Victoria-Fraserview      59154195            427
+## 6 Killarney                59154194            173
+```
 
 Looking at a few rows of our intersections, we can see CD `59154196` (a
 DA I’m sure we’re all familiar with) is mostly in Renfrew-Collignwood,
@@ -201,7 +203,7 @@ cda_intersections %>%
         plot.title = element_text(face = "bold"))
 ```
 
-![](mapping_vancouver_neighbourhoods_files/figure-gfm/fig2-1.png)<!-- -->
+
 
 As we can see, for 75% of the DA-neighbourhood intersections, 90% or
 more of the area of those intersections belong to one neighbourhood. In
@@ -394,7 +396,7 @@ da_to_neighbourhood <- cda_intersections %>%
 
 head(da_to_neighbourhood)
 ```
-```
+
     ## # A tibble: 6 × 3
     ##   DAUID    DGUID             name            
     ##   <chr>    <chr>             <chr>           
@@ -404,7 +406,6 @@ head(da_to_neighbourhood)
     ## 4 59150309 2021S051259150309 Hastings-Sunrise
     ## 5 59150310 2021S051259150310 Hastings-Sunrise
     ## 6 59150311 2021S051259150311 Hastings-Sunrise
-```
 
 ``` r
 saveRDS(da_to_neighbourhood, "da_to_neighbourhood.rds")
